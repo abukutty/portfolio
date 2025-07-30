@@ -119,6 +119,52 @@
       background-color: #0d6b60;
       transform: scale(1.1);
     }
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.4);
+    }
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 500px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close:hover {
+      color: black;
+    }
+    /* Certificate links styling */
+    .certificate-links {
+      margin: 10px 0;
+    }
+    .certificate-links a {
+      display: inline-block;
+      margin-right: 15px;
+      padding: 5px 10px;
+      border-radius: 4px;
+      background-color: #f0f4f8;
+      transition: background-color 0.3s ease;
+    }
+    .certificate-links a:hover {
+      background-color: #e0e7ff;
+    }
   </style>
 </head>
 <body>
@@ -143,12 +189,18 @@
         I am currently pursuing a degree in <strong>B.Sc Computer Science</strong> at <strong>Muthayammal Memorial College of Arts and Science</strong>, affiliated to <strong>Periyar University</strong>, which has given me a strong foundation in web development and teamwork.
       </p>
       <p>
-        I have also earned certificates that demonstrate my knowledge and commitment to continuous learning in web development. You can download or view them below.
+        I have also earned certificates that demonstrate my knowledge and commitment to continuous learning in web development:
       </p>
-      <ul>
-        <li><a href="assets/Certificate_Raja1.pdf" download>Download Certificate 1 (PDF)</a></li>
-        <li><a href="assets/Certificate_Raja2.pdf" download>Download Certificate 2 (PDF)</a></li>
-      </ul>
+      <div class="certificate-links">
+        <strong>Certificate 1:</strong>
+        <a href="#" onclick="showComingSoon()">View Certificate</a>
+        <a href="#" onclick="showComingSoon()">Download Certificate</a>
+      </div>
+      <div class="certificate-links">
+        <strong>Certificate 2:</strong>
+        <a href="#" onclick="showComingSoon()">View Certificate</a>
+        <a href="#" onclick="showComingSoon()">Download Certificate</a>
+      </div>
     </div>
   </section>
 
@@ -158,8 +210,9 @@
       <ul>
         <li>HTML, CSS, JavaScript</li>
         <li>Google Forms (GForm)</li>
-        <li>Responsive Web Design</li>
         <li>Team Work</li>
+        <li>Communication</li>
+        <li>GitHub</li>
       </ul>
     </div>
   </section>
@@ -187,7 +240,6 @@
       <h2>Contact</h2>
       <p>Email: <a href="mailto:rajasanthi0709@gmail.com">rajasanthi0709@gmail.com</a></p>
       <p>GitHub: <a href="https://github.com/abukutty" target="_blank">github.com/raja</a></p>
-      <p><a href="assets/Resume_Raja.pdf" download>Download Resume (PDF)</a></p>
     </div>
   </section>
 
@@ -199,6 +251,15 @@
 
   <button id="scrollToTop" onclick="scrollToTop()">↑</button>
 
+  <!-- Modal for Coming Soon message -->
+  <div id="comingSoonModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h3>Coming Soon!</h3>
+      <p>Certificates will be available shortly. Please check back later.</p>
+    </div>
+  </div>
+
   <script>
     function scrollToProjects() {
       document.getElementById("projects").scrollIntoView({ behavior: "smooth" });
@@ -206,6 +267,15 @@
 
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showComingSoon() {
+      document.getElementById('comingSoonModal').style.display = 'block';
+      return false; // Prevent default link behavior
+    }
+
+    function closeModal() {
+      document.getElementById('comingSoonModal').style.display = 'none';
     }
 
     window.addEventListener("scroll", function () {
@@ -216,6 +286,14 @@
         scrollBtn.style.display = "none";
       }
     });
+
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+      const modal = document.getElementById('comingSoonModal');
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
   </script>
 </body>
 </html>
